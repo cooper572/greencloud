@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenCloud // Copper Gridwork</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+    <div class="grain"></div>
+    
+    <!-- Decorative Copper Circuitry -->
+    <div class="circuit-trace trace-v" style="top: 0; left: 10%;"></div>
+    <div class="circuit-trace trace-h" style="top: 100px; left: 0;"></div>
+    <div class="circuit-trace trace-v" style="bottom: 0; right: 5%;"></div>
+    <div class="circuit-trace trace-h" style="bottom: 50px; right: 0;"></div>
+
+    <div class="dashboard">
+        <header>
+            <div>
+                <div class="logo">GREENCLOUD</div>
+                <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 5px;">CARBON-AWARE COMPUTE SCHEDULER</p>
+            </div>
+            <div class="location-tag">
+                <div class="pulse"></div>
+                <span id="region-display">DETECTING GRID...</span>
+            </div>
+        </header>
+
+        <!-- Main Metric -->
+        <section class="card metric-main">
+            <span class="label">Current Intensity</span>
+            <div class="value" id="intensity-val">--</div>
+            <span class="unit">gCO₂ / kWh</span>
+            <div id="status-badge" class="status-badge">ANALYZING</div>
+        </section>
+
+        <!-- Decision Engine -->
+        <section class="card decision-engine">
+            <div>
+                <span class="label">Executive Recommendation</span>
+                <div id="recommendation-text" class="recommendation">Calculating optimal compute window...</div>
+                <p id="sub-advice" style="color: var(--text-dim); line-height: 1.6;">
+                    Grid-aware scheduling minimizes dirty energy usage by shifting heavy loads to peak renewable periods.
+                </p>
+            </div>
+
+            <div class="timeline-container" id="timeline">
+                <!-- JS Populated bars -->
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-dim);">
+                <span>00:00</span>
+                <span>NOW</span>
+                <span>23:59</span>
+            </div>
+        </section>
+
+        <!-- Secondary metrics -->
+        <div class="detail-grid">
+            <div class="sub-metric">
+                <span class="label">Renewable Mix</span>
+                <div class="v" id="mix-val">--%</div>
+            </div>
+            <div class="sub-metric">
+                <span class="label">Best Window</span>
+                <div class="v" id="best-window-val">--:--</div>
+            </div>
+            <div class="sub-metric">
+                <span class="label">Estimated Delta</span>
+                <div class="v" id="delta-val">--%</div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <section class="control-panel">
+            <button class="btn btn-primary" onclick="triggerBuild()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 3l14 9-14 9V3z"/></svg>
+                Run Task Now
+            </button>
+            <button class="btn" onclick="scheduleTask()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                Auto-Schedule
+            </button>
+            <button class="btn" id="refresh-btn">
+                REFRESH DATA
+            </button>
+            <select class="btn" id="region-selector" style="appearance: none; background: transparent; text-align: center;">
+                <option value="US-WEST">US-WEST-1</option>
+                <option value="EU-WEST">EU-CENTRAL-1</option>
+                <option value="UK">GB-GRID</option>
+            </select>
+        </section>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
